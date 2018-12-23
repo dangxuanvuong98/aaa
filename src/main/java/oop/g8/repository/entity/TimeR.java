@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import oop.g8.model.entity.Time;
 @Repository
-
 public interface TimeR extends Neo4jRepository<Time, Long>  {
 
 }

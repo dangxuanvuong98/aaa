@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import oop.g8.model.relation.person.P2T;
 @Repository
+
 public interface P2TR  extends Neo4jRepository<P2T, Long> {
 
 }

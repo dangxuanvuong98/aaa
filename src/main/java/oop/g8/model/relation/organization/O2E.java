@@ -29,4 +29,12 @@ public class O2E {
 
 	@EndNode
 	private Event event;
+
+	public O2E(String type, Organization organization, Event event) {
+		super();
+		this.type = type;
+		this.organization = organization;
+		this.event = event;
+	}
+	
 }

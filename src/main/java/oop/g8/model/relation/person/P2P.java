@@ -6,9 +6,17 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import oop.g8.model.entity.Country;
 import oop.g8.model.entity.Person;
+import oop.g8.model.relation.country.C2C;
 
 @RelationshipEntity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class P2P {
 	@Id
 	@GeneratedValue
@@ -22,9 +30,6 @@ public class P2P {
 	@EndNode
 	private Person person2;
 
-	public P2P() {
-		super();
-	}
 
 	public P2P(String type, Person person, Person person2) {
 		super();
@@ -33,41 +38,5 @@ public class P2P {
 		this.person2 = person2;
 	}
 
-	public Long getNeo4jId() {
-		return neo4jId;
-	}
-
-	public void setNeo4jId(Long neo4jId) {
-		this.neo4jId = neo4jId;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public Person getPerson() {
-		return person;
-	}
-
-	public void setPerson(Person person) {
-		this.person = person;
-	}
-
-	public Person getPerson2() {
-		return person2;
-	}
-
-	public void setPerson2(Person person2) {
-		this.person2 = person2;
-	}
-
-	@Override
-	public String toString() {
-		return "P2P [neo4jId=" + neo4jId + ", type=" + type + ", person=" + person + ", person2=" + person2 + "]";
-	}
 
 }

@@ -30,4 +30,12 @@ public class L2O {
 
 	@EndNode
 	private Organization organization;
+
+	public L2O(String type, Location location, Organization organization) {
+		super();
+		this.type = type;
+		this.location = location;
+		this.organization = organization;
+	}
+	
 }

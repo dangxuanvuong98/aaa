@@ -27,4 +27,12 @@ public class L2P {
 
 	@EndNode
 	private Person person;
+
+	public L2P(String type, Location location, Person person) {
+		super();
+		this.type = type;
+		this.location = location;
+		this.person = person;
+	}
+	
 }

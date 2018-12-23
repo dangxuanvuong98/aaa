@@ -21,7 +21,8 @@ public class OopProAppEntry implements CommandLineRunner {
 	private PersonR pr;
 
 	@Autowired
-	private  P2CR pcr;
+	private P2CR pcr;
+
 	@Override
 	public void run(String... args) throws Exception {
 
@@ -38,13 +39,11 @@ public class OopProAppEntry implements CommandLineRunner {
 		c.setName("VietNam");
 		c.setDescription("no des");
 		c.setSource(new Source("someurl", new Date()));
-		
+
 		P2C pc = new P2C("live", p, c);
 		pcr.save(pc);
 		System.out.println("save pc successX");
-		
-		L2C lc = new L2C();
-		lc.
+
 	}
 
 }

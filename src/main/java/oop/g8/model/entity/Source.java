@@ -9,7 +9,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import oop.g8.model.relation.location.P2T;
+import oop.g8.model.relation.location.L2T;
 
 @NodeEntity
 @Data
@@ -22,5 +22,11 @@ public class Source {
 	private Long neo4jId;
 	private String link;
 	private Date date;
+
+	public Source(String link, Date date) {
+		super();
+		this.link = link;
+		this.date = date;
+	}
 
 }

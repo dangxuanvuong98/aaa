@@ -14,6 +14,7 @@ import oop.g8.model.entity.Entity;
 import oop.g8.model.entity.Event;
 import oop.g8.model.entity.Location;
 import oop.g8.model.entity.Source;
+
 @RelationshipEntity
 @Data
 @NoArgsConstructor
@@ -30,4 +31,12 @@ public class L2E {
 
 	@EndNode
 	private Event event;
+
+	public L2E(String type, Location location, Event event) {
+		super();
+		this.type = type;
+		this.location = location;
+		this.event = event;
+	}
+
 }

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import oop.g8.model.entity.Location;
 @Repository
-
 public interface LocationR extends Neo4jRepository<Location, Long>  {
 
 }

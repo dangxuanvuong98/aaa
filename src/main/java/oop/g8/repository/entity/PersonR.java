@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import oop.g8.model.entity.Person;
 @Repository
-
 public interface PersonR extends Neo4jRepository<Person, Long>  {
 
 }

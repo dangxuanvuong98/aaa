@@ -29,4 +29,12 @@ public class O2C {
 
 	@EndNode
 	private Country country;
+
+	public O2C(String type, Organization organization, Country country) {
+		super();
+		this.type = type;
+		this.organization = organization;
+		this.country = country;
+	}
+	
 }

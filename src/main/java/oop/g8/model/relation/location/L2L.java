@@ -29,4 +29,12 @@ public class L2L {
 
 	@EndNode
 	private Location location2;
+
+	public L2L(String type, Location location, Location location2) {
+		super();
+		this.type = type;
+		this.location = location;
+		this.location2 = location2;
+	}
+	
 }
