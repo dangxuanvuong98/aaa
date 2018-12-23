@@ -7,10 +7,10 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import oop.g8.model.relation.location.L2T;
+import lombok.ToString;
 
 @NodeEntity
-@Data
+@Data @ToString(callSuper=true, includeFieldNames=true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Event extends Entity {

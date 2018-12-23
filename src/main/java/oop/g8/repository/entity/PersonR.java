@@ -2,18 +2,18 @@ package oop.g8.repository.entity;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.stereotype.Repository;
 
-import oop.g8.model.entity.Event;
 import oop.g8.model.entity.Person;
 
 @Repository
 public interface PersonR extends Neo4jRepository<Person, Long> {	
 	
-	List<Event> findTop20OrderByNeo4jId();
+	Page<Person> findAll(Pageable page);
 	
-
 	Person findById(String id);
 
 	List<Person> findByName(String name);

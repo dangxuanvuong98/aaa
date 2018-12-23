@@ -11,6 +11,7 @@ import org.neo4j.ogm.annotation.StartNode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import oop.g8.model.entity.Country;
 
 /**
@@ -24,7 +25,7 @@ import oop.g8.model.entity.Country;
  *
  */
 @RelationshipEntity
-@Data
+@Data @ToString(callSuper=true, includeFieldNames=true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class C2C {

@@ -3,6 +3,8 @@ package oop.g8.repository.entity;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +13,7 @@ import oop.g8.model.entity.Event;
 @Repository
 public interface EventR extends Neo4jRepository<Event, Long> {
 	
-	List<Event> findTop20OrderByNeo4jId();
+	Page<Event> findAll(Pageable page);  
 	
 	Event findById(String id);
 

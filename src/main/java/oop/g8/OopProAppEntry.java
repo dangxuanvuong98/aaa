@@ -1,24 +1,22 @@
 package oop.g8;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import oop.g8.generator.entity.CountryGenerator;
 import oop.g8.generator.entity.EventGenerator;
 import oop.g8.generator.entity.LocationGenerator;
 import oop.g8.generator.entity.OrganizationGenerator;
 import oop.g8.generator.entity.PersonGenerator;
 import oop.g8.generator.entity.TimeGenerator;
-import oop.g8.generator.relation.person.P2LG;
-import oop.g8.generator.relation.person.P2OG;
-import oop.g8.model.entity.Location;
-import oop.g8.model.entity.Organization;
-import oop.g8.model.entity.Person;
+import oop.g8.model.relation.person.P2P;
 import oop.g8.repository.entity.CountryR;
 import oop.g8.repository.entity.EventR;
 import oop.g8.repository.entity.LocationR;
@@ -29,6 +27,7 @@ import oop.g8.repository.relation.country.C2CR;
 import oop.g8.repository.relation.person.P2CR;
 import oop.g8.repository.relation.person.P2LR;
 import oop.g8.repository.relation.person.P2OR;
+import oop.g8.service.Wrap;
 
 /**
  * public void run(String... args) throws Exception <----> hàm main() mọi thứ
@@ -69,6 +68,9 @@ public class OopProAppEntry implements CommandLineRunner {
 
 	@Autowired
 	private P2LR plr;
+	
+	@Autowired
+	private Wrap w;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -111,51 +113,51 @@ public class OopProAppEntry implements CommandLineRunner {
 		//
 		System.out.println("read file done!");
 
-		List<Person> pL1 = new ArrayList<>();
-		List<Person> pL = new ArrayList<>();
-		long s = System.currentTimeMillis();
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
-				Person p = PersonGenerator.generatePerson();
-				pL.add(p);
-				pL1.add(p);
-
-			}
-			pr.saveAll(pL);
-			System.out.println("save" + i + " !");
-			pL.clear();
-		}
-		long e = System.currentTimeMillis();
-		System.out.println("time generate Person:" + (e - s));
-
-		long s1 = System.currentTimeMillis();
-		List<Organization> oL1 = new ArrayList<>();
-		List<Organization> oL = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
-				Organization o = OrganizationGenerator.generateOrganization();
-				oL.add(o);
-				oL1.add(o);
-			}
-			or.saveAll(oL);
-			System.out.println("save" + i + " !");
-			oL.clear();
-		}
-		long e1 = System.currentTimeMillis();
-		System.out.println("time generate Country:" + (e1 - s1));
-
-		List<Location> lL1 = new ArrayList<>();
-		List<Location> lL = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
-				Location l = LocationGenerator.generateLocation();
-				lL.add(l);
-				lL1.add(l);
-			}
-			lr.saveAll(lL);
-			System.out.println("save" + i + " !");
-			lL.clear();
-		}
+//		List<Person> pL1 = new ArrayList<>();
+//		List<Person> pL = new ArrayList<>();
+//		long s = System.currentTimeMillis();
+//		for (int i = 0; i < 10; i++) {
+//			for (int j = 0; j < 10; j++) {
+//				Person p = PersonGenerator.generatePerson();
+//				pL.add(p);
+//				pL1.add(p);
+//
+//			}
+//			pr.saveAll(pL);
+//			System.out.println("save" + i + " !");
+//			pL.clear();
+//		}
+//		long e = System.currentTimeMillis();
+//		System.out.println("time generate Person:" + (e - s));
+//
+//		long s1 = System.currentTimeMillis();
+//		List<Organization> oL1 = new ArrayList<>();
+//		List<Organization> oL = new ArrayList<>();
+//		for (int i = 0; i < 10; i++) {
+//			for (int j = 0; j < 10; j++) {
+//				Organization o = OrganizationGenerator.generateOrganization();
+//				oL.add(o);
+//				oL1.add(o);
+//			}
+//			or.saveAll(oL);
+//			System.out.println("save" + i + " !");
+//			oL.clear();
+//		}
+//		long e1 = System.currentTimeMillis();
+//		System.out.println("time generate Country:" + (e1 - s1));
+//
+//		List<Location> lL1 = new ArrayList<>();
+//		List<Location> lL = new ArrayList<>();
+//		for (int i = 0; i < 10; i++) {
+//			for (int j = 0; j < 10; j++) {
+//				Location l = LocationGenerator.generateLocation();
+//				lL.add(l);
+//				lL1.add(l);
+//			}
+//			lr.saveAll(lL);
+//			System.out.println("save" + i + " !");
+//			lL.clear();
+//		}
 
 //		List<Country> cL = new ArrayList<>();
 //		for (int i = 0; i < 10; i++) {
@@ -190,11 +192,25 @@ public class OopProAppEntry implements CommandLineRunner {
 //			tL.clear();
 //		}
 
-		for (int i = 0; i <= 9; i++) {
-			por.save(P2OG.generateP2O(pL1.get(i), oL1.get(i), "relationNameO", "linkO", new Date()));
-			plr.save(P2LG.generateP2L(pL1.get(i), lL1.get(i), "relationNameL", "linkL", new Date()));
-		}
+//		for (int i = 0; i <= 9; i++) {
+//			por.save(P2OG.generateP2O(pL1.get(i), oL1.get(i), "relationNameO", "linkO", new Date()));
+//			plr.save(P2LG.generateP2L(pL1.get(i), lL1.get(i), "relationNameL", "linkL", new Date()));
+//		}
 
+//		Page<Person> pList = w.pr.findAll(new PageRequest(0, 2));
+//		System.out.println(pList.getContent());
+		
+		P2P p2p = new P2P("love", "link", new Date(), PersonGenerator.generatePerson(), PersonGenerator.generatePerson());
+		w.ppr.save(p2p);
+		
+		Page<P2P> pplist = w.ppr.findAll(new PageRequest(0, 2));
+		System.out.println(pplist.getContent());
+		
+		List<P2P> myp2p = w.ppr.findByPerson_NameAndPerson2_Name("Balsam Bart Sharline", "Maurise Tomkin Seana");
+		System.out.println(myp2p.get(0).getType());
+		
+		List<P2P> myp2p2 = w.ppr.findByPerson_NameAndType("Balsam Bart Sharline", "love");
+		System.out.println(myp2p2.get(0).getPerson2().getName());
 	}
 
 }

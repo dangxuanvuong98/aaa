@@ -7,7 +7,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import oop.g8.model.relation.location.L2T;
+import lombok.ToString;
 
 /**
  * 
@@ -24,7 +24,7 @@ import oop.g8.model.relation.location.L2T;
  *         bởi neo4J
  */
 @NodeEntity
-@Data
+@Data @ToString(callSuper=true, includeFieldNames=true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Entity {

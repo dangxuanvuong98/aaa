@@ -11,10 +11,11 @@ import org.neo4j.ogm.annotation.StartNode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import oop.g8.model.entity.Event;
 import oop.g8.model.entity.Location;
 @RelationshipEntity
-@Data
+@Data @ToString(callSuper=true, includeFieldNames=true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class E2L {

@@ -12,7 +12,7 @@
 //import oop.g8.model.relation.location.L2T;
 //
 //@NodeEntity
-//@Data
+//@Data @ToString(callSuper=true, includeFieldNames=true)
 //@NoArgsConstructor
 //@AllArgsConstructor
 //public class Source {
