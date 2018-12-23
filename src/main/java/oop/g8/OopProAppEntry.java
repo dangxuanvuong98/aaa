@@ -18,6 +18,12 @@ import oop.g8.repository.entity.SourceR;
 import oop.g8.repository.relation.country.C2CR;
 import oop.g8.repository.relation.person.P2CR;
 
+/**
+ * public void run(String... args) throws Exception <---->  hàm main()
+ * mọi thứ trong hàm run(
+ * @author Hoang Nam
+ *
+ */
 @Component
 public class OopProAppEntry implements CommandLineRunner {
 
@@ -44,6 +50,7 @@ public class OopProAppEntry implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+		
 //		// create source s
 //		Source s = new Source("some link", new Date());
 //		// save s to database
@@ -126,7 +133,6 @@ public class OopProAppEntry implements CommandLineRunner {
 		long e1 = System.currentTimeMillis();
 		System.out.println("time generate Country:" + (e1 - s1));
 
-		
 		
 		
 		

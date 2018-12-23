@@ -9,6 +9,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import oop.g8.model.relation.location.L2T;
 
+
+
+/**
+ * 
+ * Đây là lớp Entity, chứa mọi thông tin chung cho các thực thể sau này kế thừa
+ * @author Hoang Nam
+ * 
+ */
+
+
+/**
+ * @author Hoang Nam
+ * NodeEntity là của Neo4j --> đánh dấu đây là một nút trong đồ thị
+ * Data --> sinh tự động Getter, Setter
+ * NoArgsConstructor --> sinh contructor không tham số
+ * AllArgsConstructor --> sinh constructor với đầy đủ tham số
+ * Id & GeneratedValue --> Id sinh và quản lý tự động bởi neo4J
+ */
 @NodeEntity
 @Data
 @NoArgsConstructor

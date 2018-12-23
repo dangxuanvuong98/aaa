@@ -11,6 +11,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import oop.g8.model.entity.Country;
 
+
+/**
+ * RelationshipEntity --> đánh dấu đây là một quan hệ
+ * StartNode --> đây là nút nguồn
+ * EndNode --> đây là đích
+ * tất cả các thuộc tính còn lại sẽ là thuộc tính của quan hệ
+ * Khi khởi tạo một quan hệ, có 2 trường hợp:
+ * + Nút nguồn và đích đã có sẵn trong db --> chỉ tạo thêm quan hệ
+ * + Nút nguồn hoặc đích chưa có sẵn --> sẽ được tạo luôn
+ * @author Hoang Nam
+ *
+ */
 @RelationshipEntity
 @Data
 @NoArgsConstructor
