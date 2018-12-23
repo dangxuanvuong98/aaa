@@ -10,8 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import oop.g8.model.entity.Country;
-import oop.g8.model.entity.Entity;
-import oop.g8.model.entity.Source;
 import oop.g8.model.entity.Time;
 
 @RelationshipEntity

@@ -1,18 +1,9 @@
 package oop.g8;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import oop.g8.generator.entity.PersonGenerator;
-import oop.g8.generator.entity.SourceGenerator;
-import oop.g8.generator.relation.country.C2CG;
-import oop.g8.model.entity.Country;
-import oop.g8.model.entity.Person;
-import oop.g8.model.relation.country.C2C;
 import oop.g8.repository.entity.CountryR;
 import oop.g8.repository.entity.PersonR;
 import oop.g8.repository.entity.SourceR;

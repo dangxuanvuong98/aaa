@@ -9,10 +9,7 @@ import org.neo4j.ogm.annotation.StartNode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import oop.g8.model.entity.Entity;
 import oop.g8.model.entity.Location;
-import oop.g8.model.entity.Source;
 @RelationshipEntity
 @Data
 @NoArgsConstructor

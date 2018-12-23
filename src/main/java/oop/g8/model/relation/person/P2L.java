@@ -9,10 +9,8 @@ import org.neo4j.ogm.annotation.StartNode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import oop.g8.model.entity.Country;
 import oop.g8.model.entity.Location;
 import oop.g8.model.entity.Person;
-import oop.g8.model.relation.country.C2C;
 
 @RelationshipEntity
 @Data
