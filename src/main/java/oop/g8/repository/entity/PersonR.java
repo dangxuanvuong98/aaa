@@ -7,4 +7,8 @@ import oop.g8.model.entity.Person;
 @Repository
 public interface PersonR extends Neo4jRepository<Person, Long>  {
 
+	Person findByName(String string);
+
+	Person findByNameLikeAndAge(String string, int i);
+
 }
