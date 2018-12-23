@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import oop.g8.model.entity.Country;
 import oop.g8.model.entity.Time;
+
 @RelationshipEntity
 @Data
 @NoArgsConstructor
@@ -27,4 +28,12 @@ public class T2C {
 
 	@EndNode
 	private Country country;
+
+	public T2C(String type, Time time, Country country) {
+		super();
+		this.type = type;
+		this.time = time;
+		this.country = country;
+	}
+
 }
