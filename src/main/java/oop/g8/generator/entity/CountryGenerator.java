@@ -181,7 +181,7 @@ public abstract class CountryGenerator {
 		country.setId(randomId());
 		country.setName(randomName());
 		country.setDescription(randomDescription());
-		country.setSource(SourceGenerator.generateSource());
+//		country.setSource(SourceGenerator.generateSource());
 		country.setCapital(randomCapital());
 		return country;
 	}

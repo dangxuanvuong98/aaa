@@ -1,5 +1,7 @@
 package oop.g8.model.relation.time;
 
+import java.util.Date;
+
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -11,6 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import oop.g8.model.entity.Person;
 import oop.g8.model.entity.Time;
+
 @RelationshipEntity
 @Data
 @NoArgsConstructor
@@ -22,17 +25,23 @@ public class T2P {
 
 	private String type;
 
+	private String link;
+
+	private Date date;
+
 	@StartNode
 	private Time time;
 
 	@EndNode
 	private Person person;
 
-	public T2P(String type, Time time, Person person) {
+	public T2P(String type, String link, Date date, Time time, Person person) {
 		super();
 		this.type = type;
+		this.link = link;
+		this.date = date;
 		this.time = time;
 		this.person = person;
 	}
-	
+
 }

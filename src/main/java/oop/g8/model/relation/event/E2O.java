@@ -1,5 +1,7 @@
 package oop.g8.model.relation.event;
 
+import java.util.Date;
+
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -22,18 +24,25 @@ public class E2O {
 
 	private String type;
 
+	private String link;
+
+	private Date date;
+
 	@StartNode
 	private Event event;
 
 	@EndNode
 	private Organization organization;
 
-
-	public E2O(String type, Event event, Organization organization) {
+	public E2O(String type, String link, Date date, Event event, Organization organization) {
 		super();
 		this.type = type;
+		this.link = link;
+		this.date = date;
 		this.event = event;
 		this.organization = organization;
 	}
+
+
 
 }

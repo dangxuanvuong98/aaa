@@ -1,5 +1,7 @@
 package oop.g8.model.relation.country;
 
+import java.util.Date;
+
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -22,6 +24,10 @@ public class C2L {
 	private Long neo4jId;
 
 	private String type;
+	
+	private String link;
+
+	private Date date;
 
 	@StartNode
 	private Country country;
@@ -29,11 +35,14 @@ public class C2L {
 	@EndNode
 	private Location location;
 
-	public C2L(String type, Country country, Location location) {
+	public C2L(String type, String link, Date date, Country country, Location location) {
 		super();
 		this.type = type;
+		this.link = link;
+		this.date = date;
 		this.country = country;
 		this.location = location;
 	}
+
 
 }

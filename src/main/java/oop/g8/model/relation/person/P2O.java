@@ -1,5 +1,7 @@
 package oop.g8.model.relation.person;
 
+import java.util.Date;
+
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -23,16 +25,21 @@ public class P2O {
 
 	private String type;
 
+	private String link;
+
+	private Date date;
+	
 	@StartNode
 	private Person person;
 
 	@EndNode
 	private Organization organization;
 
-
-	public P2O(String type, Person person, Organization organization) {
+	public P2O(String type, String link, Date date, Person person, Organization organization) {
 		super();
 		this.type = type;
+		this.link = link;
+		this.date = date;
 		this.person = person;
 		this.organization = organization;
 	}

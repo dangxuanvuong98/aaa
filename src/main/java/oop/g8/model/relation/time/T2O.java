@@ -1,5 +1,7 @@
 package oop.g8.model.relation.time;
 
+import java.util.Date;
+
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -23,17 +25,24 @@ public class T2O {
 
 	private String type;
 
+	private String link;
+
+	private Date date;
+
 	@StartNode
 	private Time time;
 
 	@EndNode
 	private Organization organization;
 
-	public T2O(String type, Time time, Organization organization) {
+	public T2O(String type, String link, Date date, Time time, Organization organization) {
 		super();
 		this.type = type;
+		this.link = link;
+		this.date = date;
 		this.time = time;
 		this.organization = organization;
 	}
+
 
 }

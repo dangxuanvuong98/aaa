@@ -1,5 +1,7 @@
 package oop.g8.model.relation.country;
 
+import java.util.Date;
+
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -23,15 +25,21 @@ public class C2T {
 
 	private String type;
 
+	private String link;
+
+	private Date date;
+
 	@StartNode
 	private Country country;
 
 	@EndNode
 	private Time time;
 
-	public C2T(String type, Country country, Time time) {
+	public C2T(String type, String link, Date date, Country country, Time time) {
 		super();
 		this.type = type;
+		this.link = link;
+		this.date = date;
 		this.country = country;
 		this.time = time;
 	}

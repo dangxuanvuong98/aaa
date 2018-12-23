@@ -1,5 +1,7 @@
 package oop.g8.model.relation.time;
 
+import java.util.Date;
+
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -22,17 +24,24 @@ public class T2T {
 
 	private String type;
 
+	private String link;
+
+	private Date date;
+
 	@StartNode
 	private Time time;
 
 	@EndNode
 	private Time time2;
 
-	public T2T(String type, Time time, Time time2) {
+	public T2T(String type, String link, Date date, Time time, Time time2) {
 		super();
 		this.type = type;
+		this.link = link;
+		this.date = date;
 		this.time = time;
 		this.time2 = time2;
 	}
-	
+
+
 }

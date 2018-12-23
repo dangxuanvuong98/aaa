@@ -12,6 +12,6 @@ import oop.g8.model.relation.location.L2T;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location extends Entity {
+	
 	private String country;
-
 }

@@ -1,5 +1,7 @@
 package oop.g8.model.relation.location;
 
+import java.util.Date;
+
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -23,15 +25,21 @@ public class L2E {
 
 	private String type;
 
+	private String link;
+
+	private Date date;
+
 	@StartNode
 	private Location location;
 
 	@EndNode
 	private Event event;
 
-	public L2E(String type, Location location, Event event) {
+	public L2E(String type, String link, Date date, Location location, Event event) {
 		super();
 		this.type = type;
+		this.link = link;
+		this.date = date;
 		this.location = location;
 		this.event = event;
 	}

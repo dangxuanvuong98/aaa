@@ -1,5 +1,7 @@
 package oop.g8.model.relation.person;
 
+import java.util.Date;
+
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -22,6 +24,10 @@ public class P2T {
 	private Long neo4jId;
 
 	private String type;
+	
+	private String link;
+
+	private Date date;
 
 	@StartNode
 	private Person person;
@@ -29,11 +35,14 @@ public class P2T {
 	@EndNode
 	private Time time;
 
-	public P2T(String type, Person person, Time time) {
+	public P2T(String type, String link, Date date, Person person, Time time) {
 		super();
 		this.type = type;
+		this.link = link;
+		this.date = date;
 		this.person = person;
 		this.time = time;
 	}
+
 
 }

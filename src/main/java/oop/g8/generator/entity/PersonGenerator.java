@@ -196,7 +196,7 @@ public class PersonGenerator {
 		person.setId(randomId());
 		person.setJob(randomJob());
 		person.setName(randomName());
-		person.setSource(SourceGenerator.generateSource());
+//		person.setSource(SourceGenerator.generateSource());
 		return person;
 	}
 

@@ -1,5 +1,7 @@
 package oop.g8.model.relation.organization;
 
+import java.util.Date;
+
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -23,17 +25,24 @@ public class O2T {
 
 	private String type;
 
+	private String link;
+
+	private Date date;
+
 	@StartNode
 	private Organization organization;
 
 	@EndNode
 	private Time time;
 
-	public O2T(String type, Organization organization, Time time) {
+	public O2T(String type, String link, Date date, Organization organization, Time time) {
 		super();
 		this.type = type;
+		this.link = link;
+		this.date = date;
 		this.organization = organization;
 		this.time = time;
 	}
+
 
 }
