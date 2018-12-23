@@ -1,9 +1,17 @@
 package oop.g8;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import oop.g8.generator.entity.CountryGenerator;
+import oop.g8.generator.entity.PersonGenerator;
+import oop.g8.generator.entity.SourceGenerator;
+import oop.g8.model.entity.Country;
+import oop.g8.model.entity.Person;
 import oop.g8.repository.entity.CountryR;
 import oop.g8.repository.entity.PersonR;
 import oop.g8.repository.entity.SourceR;
@@ -29,7 +37,7 @@ public class OopProAppEntry implements CommandLineRunner {
 	// tương tự
 	@Autowired
 	private P2CR pcr;
-	
+
 	@Autowired
 	private C2CR cc;
 
@@ -78,44 +86,65 @@ public class OopProAppEntry implements CommandLineRunner {
 //		P2C p2c = pcr.findByPerson_Job("student");
 //		System.out.println(p2c);
 
-//		PersonGenerator.getData(
-//				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\firstname_list",
-//				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\midname_list",
-//				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\lastname_list",
-//				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\job_list",
-//				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\des_element_list");
-//
-//		SourceGenerator.getData(
-//				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Source\\domain_list");
-//		System.out.println("read file done!");
-//		List<Person> pL = new ArrayList<>();
-//		long s = System.currentTimeMillis();
-////		for (int i = 0; i < 17000 ; i++) {
-////			for (int j = 0; j < 1000; j++) {
-////				pL.add(PersonGenerator.generatePerson());
-////			}
-////			pr.saveAll(pL);
-////			System.out.println("save" + i + " !");
-////			pL.clear();
-////		}
-//
-//		long e = System.currentTimeMillis();
-//		System.out.println("time:" + (e - s));
-//		
-//		
-//		Country c1 = new Country("Ha Noi");
-//		c1.setName("viet nam");
-//		
-//		Country c2 = new Country("Lalala");
-//		c2.setName("i dont now");
-//		
-//		cr.save(c1);
-//		cr.save(c2);
-//		
-//		C2C cc1 = C2CG.generateC2C(c1, c2, " lang gieng ");
-//		cc.save(cc1);
-//		System.out.println("save cc susccess!");
-//		
+		////////////////
+		PersonGenerator.getData(
+				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\firstname_list",
+				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\midname_list",
+				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\lastname_list",
+				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\job_list",
+				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\des_element_list");
+
+		////////////////
+		SourceGenerator.getData(
+				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Source\\domain_list");
+
+		////////////////
+		CountryGenerator.getData(
+				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Country\\country_list",
+				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Country\\capital_list",
+				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Country\\des_element1_list",
+				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Country\\des_element2_list",
+				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Country\\des_element3_list");
+
+		System.out.println("read file done!");
+
+		
+		
+		List<Country> cL = new ArrayList<>();
+//		List<Country> cL2 = new ArrayList<>();
+		long s1 = System.currentTimeMillis();
+		for (int i = 0; i < 100; i++) {
+			for (int j = 0; j < 1000; j++) {
+				Country c = CountryGenerator.generateCountry();
+				cL.add(c);
+//				cL2.add(c);
+			}
+			cr.saveAll(cL);
+			System.out.println("save" + i + " !");
+			cL.clear();
+		}
+		long e1 = System.currentTimeMillis();
+		System.out.println("time generate Country:" + (e1 - s1));
+
+		
+		
+		
+		
+		List<Person> pL = new ArrayList<>();
+//		List<Person> pL2 = new ArrayList<>();
+		long s = System.currentTimeMillis();
+		for (int i = 0; i < 100; i++) {
+			for (int j = 0; j < 1000; j++) {
+				Person p = PersonGenerator.generatePerson();
+				pL.add(p);
+//				pL2.add(p);
+			}
+			pr.saveAll(pL);
+			System.out.println("save" + i + " !");
+			pL.clear();
+		}
+		long e = System.currentTimeMillis();
+		System.out.println("time generate Person:" + (e - s));
 
 	}
 
