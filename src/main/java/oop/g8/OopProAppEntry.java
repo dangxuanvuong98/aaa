@@ -9,6 +9,7 @@ import oop.g8.generator.entity.EventGenerator;
 import oop.g8.generator.entity.LocationGenerator;
 import oop.g8.generator.entity.OrganizationGenerator;
 import oop.g8.generator.entity.PersonGenerator;
+import oop.g8.generator.entity.SourceGenerator;
 import oop.g8.generator.entity.TimeGenerator;
 import oop.g8.service.InitDB;
 import oop.g8.service.QueryService;
@@ -38,7 +39,7 @@ public class OopProAppEntry implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-//		SourceGenerator.getData("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData/entity/Source/domain_list");
+		SourceGenerator.getData("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData/entity/Source/domain_list");
 		PersonGenerator.getData(
 				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\firstname_list",
 				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\midname_list",
