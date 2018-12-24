@@ -39,40 +39,40 @@ public class OopProAppEntry implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		SourceGenerator.getData("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData/entity/Source/domain_list");
+		SourceGenerator.getData("src/main/resources/rawData/entity/Source/domain_list");
 		PersonGenerator.getData(
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\firstname_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\midname_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\lastname_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\job_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Person\\des_element_list");
+				"src/main/resources/rawData/entity/Person/firstname_list",
+				"src/main/resources/rawData/entity/Person/midname_list",
+				"src/main/resources/rawData/entity/Person/lastname_list",
+				"src/main/resources/rawData/entity/Person/job_list",
+				"src/main/resources/rawData/entity/Person/des_element_list");
 		OrganizationGenerator.getData(
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Organization\\organization_name_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Organization\\headquarters_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Organization\\firstname_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Organization\\midname_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Organization\\lastname_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Organization\\email_domain_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Organization\\des_element1_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Organization\\des_element2_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Organization\\country_list");
+				"src/main/resources/rawData/entity/Organization/organization_name_list",
+				"src/main/resources/rawData/entity/Organization/headquarters_list",
+				"src/main/resources/rawData/entity/Organization/firstname_list",
+				"src/main/resources/rawData/entity/Organization/midname_list",
+				"src/main/resources/rawData/entity/Organization/lastname_list",
+				"src/main/resources/rawData/entity/Organization/email_domain_list",
+				"src/main/resources/rawData/entity/Organization/des_element1_list",
+				"src/main/resources/rawData/entity/Organization/des_element2_list",
+				"src/main/resources/rawData/entity/Organization/country_list");
 		CountryGenerator.getData(
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Country\\country_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Country\\capital_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Country\\des_element1_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Country\\des_element2_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Country\\des_element3_list");
+				"src/main/resources/rawData/entity/Country/country_list",
+				"src/main/resources/rawData/entity/Country/capital_list",
+				"src/main/resources/rawData/entity/Country/des_element1_list",
+				"src/main/resources/rawData/entity/Country/des_element2_list",
+				"src/main/resources/rawData/entity/Country/des_element3_list");
 		LocationGenerator.getData(
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Location\\location_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Location\\country_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Location\\des_element_list");
+				"src/main/resources/rawData/entity/Location/location_list",
+				"src/main/resources/rawData/entity/Location/country_list",
+				"src/main/resources/rawData/entity/Location/des_element_list");
 		EventGenerator.getData(
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Event\\venue_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Event\\country_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Event\\festival_name_list",
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Event\\product_name_list");
+				"src/main/resources/rawData/entity/Event/venue_list",
+				"src/main/resources/rawData/entity/Event/country_list",
+				"src/main/resources/rawData/entity/Event/festival_name_list",
+				"src/main/resources/rawData/entity/Event/product_name_list");
 		TimeGenerator.getData(
-				"C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\entity\\Time\\special_day_list");
+				"src/main/resources/rawData/entity/Time/special_day_list");
 
 		//
 		System.out.println("read files done!");

@@ -47,7 +47,7 @@ public class DataService {
 	    public  DataService(){
 	        p2p = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\00"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/00"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -66,7 +66,7 @@ public class DataService {
 
 	        p2c = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\02"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/02"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -85,7 +85,7 @@ public class DataService {
 
 	        p2o = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\01"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/01"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -103,7 +103,7 @@ public class DataService {
 
 	        o2e = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\14"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/14"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -121,7 +121,7 @@ public class DataService {
 
 	        o2l = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\13"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/13"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -139,7 +139,7 @@ public class DataService {
 
 	        l2e = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\34"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/34"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -157,7 +157,7 @@ public class DataService {
 
 	        l2p = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\30"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/30"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -175,7 +175,7 @@ public class DataService {
 
 	        c2e = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\24"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/24"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -193,7 +193,7 @@ public class DataService {
 
 	        c2o = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\21"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/21"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -211,7 +211,7 @@ public class DataService {
 
 	        e2p = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\40"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/40"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -229,7 +229,7 @@ public class DataService {
 
 	        e2o = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\41"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/41"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -247,7 +247,7 @@ public class DataService {
 
 	        e2l = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\43"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/43"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -267,7 +267,7 @@ public class DataService {
 
 	        t2p = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\50"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/50"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
@@ -286,7 +286,7 @@ public class DataService {
 
 	        t2t = new ArrayList<String>();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream("C:\\Users\\Hoang Nam\\Documents\\CODE-SOURCE\\STS3.9\\OopPro\\src\\main\\resources\\rawData\\relation\\55"), "UTF8"))) {
+					new FileInputStream("src/main/resources/rawData/relation/55"), "UTF8"))) {
 				String name;
 
 				while ((name = reader.readLine()) != null) {
