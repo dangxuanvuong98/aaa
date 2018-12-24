@@ -26,13 +26,13 @@ public class OopProAppEntry implements CommandLineRunner {
 
 	@Autowired
 	private QueryService queryService;
-	
+
 	@Autowired
 	private InitDB initDbService;
 
 	@Autowired
 	private ScannerService scn;
-	
+
 	private int selection;
 
 	@Override
@@ -96,90 +96,6 @@ public class OopProAppEntry implements CommandLineRunner {
 				System.exit(0);
 			}
 		}
-
-//		List<Person> pL1 = new ArrayList<>();
-//		List<Person> pL = new ArrayList<>();
-//		long s = System.currentTimeMillis();
-//		for (int i = 0; i < 10; i++) {
-//			for (int j = 0; j < 10; j++) {
-//				Person p = PersonGenerator.generatePerson();
-//				pL.add(p);
-//				pL1.add(p);
-//
-//			}
-//			pr.saveAll(pL);
-//			System.out.println("save" + i + " !");
-//			pL.clear();
-//		}
-//		long e = System.currentTimeMillis();
-//		System.out.println("time generate Person:" + (e - s));
-//
-//		long s1 = System.currentTimeMillis();
-//		List<Organization> oL1 = new ArrayList<>();
-//		List<Organization> oL = new ArrayList<>();
-//		for (int i = 0; i < 10; i++) {
-//			for (int j = 0; j < 10; j++) {
-//				Organization o = OrganizationGenerator.generateOrganization();
-//				oL.add(o);
-//				oL1.add(o);
-//			}
-//			or.saveAll(oL);
-//			System.out.println("save" + i + " !");
-//			oL.clear();
-//		}
-//		long e1 = System.currentTimeMillis();
-//		System.out.println("time generate Country:" + (e1 - s1));
-//
-//		List<Location> lL1 = new ArrayList<>();
-//		List<Location> lL = new ArrayList<>();
-//		for (int i = 0; i < 10; i++) {
-//			for (int j = 0; j < 10; j++) {
-//				Location l = LocationGenerator.generateLocation();
-//				lL.add(l);
-//				lL1.add(l);
-//			}
-//			lr.saveAll(lL);
-//			System.out.println("save" + i + " !");
-//			lL.clear();
-//		}
-
-//		List<Country> cL = new ArrayList<>();
-//		for (int i = 0; i < 10; i++) {
-//			for (int j = 0; j < 10; j++) {
-//				Country c = CountryGenerator.generateCountry();
-//				cL.add(c);
-//			}
-//			cr.saveAll(cL);
-//			System.out.println("save" + i + " !");
-//			cL.clear();
-//		}
-//
-//		List<Event> eL = new ArrayList<>();
-//		for (int i = 0; i < 10; i++) {
-//			for (int j = 0; j < 10; j++) {
-//				Event e11 = EventGenerator.generateEvent();
-//				eL.add(e11);
-//			}
-//			er.saveAll(eL);
-//			System.out.println("save" + i + " !");
-//			eL.clear();
-//		}
-//
-//		List<Time> tL = new ArrayList<>();
-//		for (int i = 0; i < 10; i++) {
-//			for (int j = 0; j < 10; j++) {
-//				Time t = TimeGenerator.generateTime();
-//				tL.add(t);
-//			}
-//			tr.saveAll(tL);
-//			System.out.println("save" + i + " !");
-//			tL.clear();
-//		}
-
-//		for (int i = 0; i <= 9; i++) {
-//			por.save(P2OG.generateP2O(pL1.get(i), oL1.get(i), "relationNameO", "linkO", new Date()));
-//			plr.save(P2LG.generateP2L(pL1.get(i), lL1.get(i), "relationNameL", "linkL", new Date()));
-//		}
 
 //		Page<Person> pList = w.pr.findAll(new PageRequest(0, 2));
 //		System.out.println(pList.getContent());

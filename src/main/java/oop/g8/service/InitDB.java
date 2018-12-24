@@ -12,14 +12,12 @@ import oop.g8.generator.entity.LocationGenerator;
 import oop.g8.generator.entity.OrganizationGenerator;
 import oop.g8.generator.entity.PersonGenerator;
 import oop.g8.generator.entity.TimeGenerator;
-import oop.g8.generator.relation.country.C2CG;
 import oop.g8.model.entity.Country;
 import oop.g8.model.entity.Event;
 import oop.g8.model.entity.Location;
 import oop.g8.model.entity.Organization;
 import oop.g8.model.entity.Person;
 import oop.g8.model.entity.Time;
-import oop.g8.model.relation.country.C2C;
 
 @Service
 public class InitDB {
@@ -74,7 +72,7 @@ public class InitDB {
 			oL.clear();
 		}
 		f = System.currentTimeMillis();
-		System.out.println("time generate Country:" + (s - f));
+		System.out.println("time generate Country:" + ( f - s));
 
 ////////////////////////////////////////////////////////////////////////////		
 		s = System.currentTimeMillis();
@@ -91,14 +89,14 @@ public class InitDB {
 			lL.clear();
 		}
 		f = System.currentTimeMillis();
-		System.out.println("time generate Location:" + (s - f));
+		System.out.println("time generate Location:" + (f - s));
 
 ////////////////////////////////////////////////////////////////////////////
 		s = System.currentTimeMillis();
 		List<Country> cL1 = new ArrayList<>();
 		List<Country> cL = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
+		for (int i = 0; i < outterLoop1; i++) {
+			for (int j = 0; j < 1000; j++) {
 				Country c = CountryGenerator.generateCountry();
 				cL1.add(c);
 				cL.add(c);
@@ -108,14 +106,14 @@ public class InitDB {
 			cL.clear();
 		}
 		f = System.currentTimeMillis();
-		System.out.println("time generate Location:" + (s - f));
+		System.out.println("time generate Location:" + (f - s));
 
 ////////////////////////////////////////////////////////////////////////////	
 		s = System.currentTimeMillis();
 		List<Event> eL1 = new ArrayList<>();
 		List<Event> eL = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
+		for (int i = 0; i < outterLoop1; i++) {
+			for (int j = 0; j < 1000; j++) {
 				Event e11 = EventGenerator.generateEvent();
 				eL.add(e11);
 				eL1.add(e11);
@@ -131,8 +129,8 @@ public class InitDB {
 		s = System.currentTimeMillis();
 		List<Time> tL1 = new ArrayList<>();
 		List<Time> tL = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
+		for (int i = 0; i < outterLoop1; i++) {
+			for (int j = 0; j < 1000; j++) {
 				Time t = TimeGenerator.generateTime();
 				tL.add(t);
 				tL1.add(t);
@@ -145,16 +143,16 @@ public class InitDB {
 		System.out.println("time generate Event:" + (f - s));
 
 ////////////////////////////////////////////////////////////////////////////
-		List<C2C> ccL = new ArrayList<>();
-		for (int i = 0; i < outterLoop1; i++) {
-			for (int j = 0; j < 1000; j++) {
-				C2C c2c = C2CG.generateC2C(cL1.get(index), cL1.get(index), relationName, link, date);
-				ccL.add(c2c);
-			}
-			w.ccr.saveAll(ccL);
-			System.out.println("save Time" + i + "x1000 !");
-			ccL.clear();
-		}
+//		List<C2C> ccL = new ArrayList<>();
+//		for (int i = 0; i < outterLoop2; i++) {
+//			for (int j = 0; j < 1000; j++) {
+//				C2C c2c = C2CG.generateC2C(cL1.get(index), cL1.get(index), relationName, link, date);
+//				ccL.add(c2c);
+//			}
+//			w.ccr.saveAll(ccL);
+//			System.out.println("save Time" + i + "x1000 !");
+//			ccL.clear();
+//		}
 	}
 
 }
