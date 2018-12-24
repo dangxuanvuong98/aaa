@@ -17,4 +17,6 @@ public interface E2LR extends Neo4jRepository<E2L, Long> {
 	List<E2L> findByEvent_NameAndLocation_Name(String name1, String name2);
 
 	List<E2L> findByEvent_NameAndType(String name, String type);
+
+	List<E2L> findByTypeAndLocation_Name(String string, String location);
 }

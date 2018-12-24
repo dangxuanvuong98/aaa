@@ -17,4 +17,8 @@ public interface P2OR extends Neo4jRepository<P2O, Long> {
 	List<P2O> findByPerson_NameAndOrganization_Name(String name1, String name2);
 
 	List<P2O> findByPerson_NameAndType(String name, String type);
+
+	List<P2O> findByTypeAndOrganization_Name(String string, String organization);
+
+	List<P2O> findByTypeLikeAndOrganization_Name(String string, String organization);
 }

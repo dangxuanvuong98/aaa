@@ -17,6 +17,10 @@ public interface P2PR extends Neo4jRepository<P2P, Long>  {
 	List<P2P> findByPerson_NameAndPerson2_Name(String name1, String name2);
 	
 	List<P2P> findByPerson_NameAndType(String name, String type);
+
+	List<P2P> findByPerson2_NameAndType(String person, String string);
+
+	List<P2P> findByPerson2_NameAndTypeLike(String person, String string);
 	
 	
 }
