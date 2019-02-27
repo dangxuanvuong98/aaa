@@ -47,11 +47,11 @@ public class TimeGenerator {
 		}
 	}
 	
-	public static String randomId() {
+	public static String randomMyid() {
 		Integer index = getIndex();
-		String id = "Time" + index;
+		String myid = "Time" + index;
 		incIndex();
-		return id;
+		return myid;
 	}
 	
 	public static String randomName() {
@@ -77,10 +77,10 @@ public class TimeGenerator {
 	 * 
 	 * @return một object Time với các thuộc tính ngẫu nhiên
 	 */
-	public static Time generateTime() {
+	public static Time generate() {
 		Time time = new Time();
 		time.setDescription(randomDescription());
-		time.setId(randomId());
+		time.setMyid(randomMyid());
 		time.setName(randomName());
 //		time.setSource(SourceGenerator.generateSource());
 		return time;

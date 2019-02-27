@@ -76,7 +76,7 @@ public class SourceGenerator {
 	 * 
 	 * @return thực thể Source sinh ngẫu nhiên
 	 */
-	public static Source generateSource() {
+	public static Source generate() {
 		Source source = new Source();
 		source.setDate(randomDate());
 		source.setLink(randomLink());

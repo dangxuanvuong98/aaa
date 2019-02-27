@@ -8,10 +8,11 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @NodeEntity
-@Data @ToString(callSuper=true, includeFieldNames=true)
+@Data
+@ToString(callSuper = true, includeFieldNames = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location extends Entity {
-	
+
 	private String country;
 }

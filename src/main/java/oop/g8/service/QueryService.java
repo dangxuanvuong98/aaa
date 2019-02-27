@@ -11,25 +11,17 @@ import oop.g8.model.entity.Event;
 import oop.g8.model.entity.Location;
 import oop.g8.model.entity.Organization;
 import oop.g8.model.entity.Person;
-import oop.g8.model.relation.country.C2C;
-import oop.g8.model.relation.event.E2C;
-import oop.g8.model.relation.event.E2L;
-import oop.g8.model.relation.event.E2T;
-import oop.g8.model.relation.organization.O2O;
-import oop.g8.model.relation.person.P2C;
-import oop.g8.model.relation.person.P2E;
-import oop.g8.model.relation.person.P2O;
-import oop.g8.model.relation.person.P2P;
-import oop.g8.model.relation.person.P2T;
+import oop.g8.model.entity.Time;
+import oop.g8.model.relation.Relationship;
 
 @Service
 public class QueryService {
 	
 	@Autowired
-	private Wrap w;
+	private Wrap wrap;
 	
 	@Autowired
-	private ScannerService scn;
+	private ScannerService scanner;
 	
 	private int selection;
 
@@ -57,7 +49,7 @@ public class QueryService {
 		System.out.println("    20.COUNTRY nào có RELATIONSHIP với COUNTRY?");
 		System.out.println("    21.Quay lại");
 		System.out.print("->Lựa chọn: ");
-		selection = scn.getInputNum(21);
+		selection = scanner.getInputNum(21);
 		switch (selection) {
 		case 1: {
 			// return:country(thuộc tính) của 1 location
@@ -65,9 +57,9 @@ public class QueryService {
 			String location;
 			System.out.println("    #LOCATION thuộc đất nước nào?");
 			System.out.print("    >_LOCATION: ");
-			location = scn.getInputStr();
+			location = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<Location> ll = w.lr.findByName(location);
+			List<Location> ll = wrap.location_repository.findByName(location);
 			System.out.println("Has " + ll.size() + " Location with name is " + location + " !");
 			for (Location l : ll) {
 				System.out.println(l.getCountry());
@@ -80,9 +72,9 @@ public class QueryService {
 			String location;
 			System.out.println("    #Lấy thông tin mô tả của 1 LOCATION?");
 			System.out.print("    >_LOCATION: ");
-			location = scn.getInputStr();
+			location = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<Location> ll = w.lr.findByName(location);
+			List<Location> ll = wrap.location_repository.findByName(location);
 			System.out.println("Has " + ll.size() + " Location with name is " + location + " !");
 			for (Location l : ll) {
 				System.out.println(l.getDescription());
@@ -96,9 +88,9 @@ public class QueryService {
 			String country;
 			System.out.println("    #COUNTRY có thủ đô là gì?");
 			System.out.print("    >_COUNTRY: ");
-			country = scn.getInputStr();
+			country = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<Country> mylist = w.cr.findByName(country);
+			List<Country> mylist = wrap.country_repository.findByName(country);
 			System.out.println("Has " + mylist.size() + " result!");
 			for (Country i : mylist) {
 				System.out.println(i.getCapital());
@@ -110,12 +102,13 @@ public class QueryService {
 			String person;
 			System.out.println("    #PERSON đến từ đâu?");
 			System.out.print("    >_PERSON: ");
-			person = scn.getInputStr();
+			person = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<P2C> mylist = w.pcr.findByPerson_NameAndType(person, "đến_từ");
+			@SuppressWarnings("unchecked")
+			List<Relationship<Person, Country>> mylist = wrap.relationship_repository.findByEntity1_NameAndType(person, "đến_từ");
 			System.out.println("Has " + mylist.size() + " result!");
-			for (P2C i : mylist) {
-				System.out.println(i.getPerson().getName());
+			for (Relationship<Person, Country> i : mylist) {
+				System.out.println(i.getEntity1().getName());
 			}
 			break;
 		}
@@ -126,9 +119,9 @@ public class QueryService {
 			String person;
 			System.out.println("    #PERSON đang làm công việc gì?");
 			System.out.print("    >_PERSON: ");
-			person = scn.getInputStr();
+			person = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<Person> mylist = w.pr.findByName(person);
+			List<Person> mylist = wrap.person_repository.findByName(person);
 			System.out.println("Has " + mylist.size() + " Person with name is " + person + " !");
 			for (Person i : mylist) {
 				System.out.println(i.getJob());
@@ -144,13 +137,14 @@ public class QueryService {
 			String event;
 			System.out.println("    #EVENT diễn ra ở đâu?");
 			System.out.print("    >_EVENT: ");
-			event = scn.getInputStr();
+			event = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<E2L> mylist = w.elr.findByEvent_NameAndType(event, "diễn_ra_ở");
+			@SuppressWarnings("unchecked")
+			List<Relationship<Event, Location>> mylist = wrap.relationship_repository.findByEntity1_NameAndType(event, "diễn_ra_ở");
 			System.out.println("Has " + mylist.size() + " Event with name is " + event
 					+ " and has relation name 'diễn_ra_ở' with Location !");
-			for (E2L i : mylist) {
-				System.out.println(i.getLocation().getName());
+			for (Relationship<Event, Location> i : mylist) {
+				System.out.println(i.getEntity1().getName());
 			}
 			break;
 		}
@@ -161,9 +155,9 @@ public class QueryService {
 			String event;
 			System.out.println("    #EVENT diễn ra trong khoảng thời gian nào?");
 			System.out.print("    >_EVENT: ");
-			event = scn.getInputStr();
+			event = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<Event> mylist = w.er.findByName(event);
+			List<Event> mylist = wrap.event_repository.findByName(event);
 			System.out.println("Has " + mylist.size() + " Event with name is " + event + " !");
 			for (Event i : mylist) {
 				System.out.println(i.getTimeStart() + "  -->  " + i.getTimeEnd());
@@ -176,9 +170,9 @@ public class QueryService {
 			String organization;
 			System.out.println("    #Thông tin liên hệ của ORGANIZATION");
 			System.out.print("    >_ORGANIZATION: ");
-			organization = scn.getInputStr();
+			organization = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<Organization> mylist = w.or.findByName(organization);
+			List<Organization> mylist = wrap.organization_repository.findByName(organization);
 			System.out.println("Has " + mylist.size() + " Organization with name is " + organization + " !");
 			for (Organization i : mylist) {
 				System.out.println(i.getEmail() + " +  " + i.getPhone());
@@ -192,12 +186,13 @@ public class QueryService {
 			String organization;
 			System.out.println("    #PERSON nào làm việc cho một ORGANIZATION?");
 			System.out.print("    >_PERSON: ");
-			organization = scn.getInputStr();
+			organization = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<P2O> mylist = w.por.findByTypeLikeAndOrganization_Name("*", organization);
+			@SuppressWarnings("unchecked")
+			List<Relationship<Person, Organization>> mylist = wrap.relationship_repository.findByTypeLikeAndEntity2_Name("*", organization);
 			System.out.println("Has " + mylist.size() + " result !");
-			for (P2O i : mylist) {
-				System.out.println(i.getPerson().getName());
+			for (Relationship<Person, Organization> i : mylist) {
+				System.out.println(i.getEntity1().getName());
 			}
 			break;
 		}
@@ -208,9 +203,9 @@ public class QueryService {
 			String country;
 			System.out.println("    #Đưa ra danh sách các LOCATION thuộc 1 COUNTRY?");
 			System.out.print("    >_COUNTRY: ");
-			country = scn.getInputStr();
+			country = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<Location> mylist = w.lr.findByCountry(country);
+			List<Location> mylist = wrap.location_repository.findByCountry(country);
 			System.out.println("Has " + mylist.size() + " Location with country's name is " + country + " !");
 			for (Location i : mylist) {
 				System.out.println(i.getName());
@@ -224,13 +219,14 @@ public class QueryService {
 			String time;
 			System.out.println("    #Những PERSON nào sinh ra vào TIME?");
 			System.out.print("    >_TIME: ");
-			time = scn.getInputStr();
+			time = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
 
-			List<P2T> mylist = w.ptr.findByTypeAndTime_NameContaining("sinh ra vào", time);
+			@SuppressWarnings("unchecked")
+			List<Relationship<Person, Time>> mylist = wrap.relationship_repository.findByTypeAndEntity2_NameContaining("sinh ra vào", time);
 			System.out.println("Has " + mylist.size() + " result!");
-			for (P2T i : mylist) {
-				System.out.println(i.getPerson().getName());
+			for (Relationship<Person, Time> i : mylist) {
+				System.out.println(i.getEntity1().getName());
 			}
 		}
 
@@ -240,12 +236,13 @@ public class QueryService {
 			String organization;
 			System.out.println("    #Những ORGANIZATION nào hợp tác với ORGANIZATION?");
 			System.out.print("    >_ORGANIZATION: ");
-			organization = scn.getInputStr();
+			organization = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<O2O> mylist = w.oor.findByTypeAndOrganization2_Name("hợp tác", organization);
+			@SuppressWarnings("unchecked")
+			List<Relationship<Organization, Organization>> mylist = wrap.relationship_repository.findByTypeAndEntity2_Name("hợp tác", organization);
 			System.out.println("Has " + mylist.size() + "result!");
-			for (O2O i : mylist) {
-				System.out.println(i.getOrganization().getName());
+			for (Relationship<Organization, Organization> i : mylist) {
+				System.out.println(i.getEntity1().getName());
 			}
 			break;
 		}
@@ -256,12 +253,13 @@ public class QueryService {
 			String country;
 			System.out.println("    #Những PERSON nào đã đến thăm COUNTRY?");
 			System.out.print("    >_COUNTRY: ");
-			country = scn.getInputStr();
+			country = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<P2C> mylist = w.pcr.findByTypeAndCountry_Name("tới thăm", country);
+			@SuppressWarnings("unchecked")
+			List<Relationship<Person, Country>> mylist = wrap.relationship_repository.findByTypeAndEntity2_Name("tới thăm", country);
 			System.out.println("Has " + mylist.size() + "result!");
-			for (P2C i : mylist) {
-				System.out.println(i.getPerson().getName());
+			for (Relationship<Person, Country> i : mylist) {
+				System.out.println(i.getEntity1().getName());
 			}
 			break;
 		}
@@ -276,19 +274,21 @@ public class QueryService {
 			String year;
 			System.out.println("    #Những EVENT diễn ra tại một COUNTRY trong YEAR?");
 			System.out.print("    >_COUNTRY: ");
-			country = scn.getInputStr();
+			country = scanner.getInputStr();
 			System.out.print("    >_YEAR: ");
-			year = scn.getInputStr();
+			year = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<E2C> mylist = w.ecr.findByCountry_NameAndType(country, "diễn ra tại");
-			List<E2T> mylist2 = w.etr.findByTypeAndTime_Name_EndingWith("diễn ra vào", year);
+			@SuppressWarnings("unchecked")
+			List<Relationship<Event, Country>> mylist = wrap.relationship_repository.findByEntity1_NameAndType(country, "diễn ra tại");
+			@SuppressWarnings("unchecked")
+			List<Relationship<Event, Time>> mylist2 = wrap.relationship_repository.findByEntity2_Name_EndingWith("diễn ra vào", year);
 			List<Event> el1 = new ArrayList<>();
 			List<Event> el2 = new ArrayList<>();
-			for (E2C j : mylist) {
-				el1.add(j.getEvent());
+			for (Relationship<Event, Country> j : mylist) {
+				el1.add(j.getEntity1());
 			}
-			for (E2T k : mylist2) {
-				el2.add(k.getEvent());
+			for (Relationship<Event, Time> k : mylist2) {
+				el2.add(k.getEntity1());
 			}
 			el1.retainAll(el2);
 			System.out.println("Has " + el1.size() + "result!");
@@ -304,12 +304,13 @@ public class QueryService {
 			String person;
 			System.out.println("    #Những PERSON nào có quan hệ với 1 PERSON?");
 			System.out.print("    >_PERSON: ");
-			person = scn.getInputStr();
+			person = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<P2P> mylist = w.ppr.findByPerson2_NameAndTypeLike(person, "*");
+			@SuppressWarnings("unchecked")
+			List<Relationship<Person, Person>> mylist = wrap.relationship_repository.findByEntity1_NameAndTypeLike(person, "*");
 			System.out.println("Has " + mylist.size() + "result!");
-			for (P2P i : mylist) {
-				System.out.println(i.getPerson().getName());
+			for (Relationship<Person, Person> i : mylist) {
+				System.out.println(i.getEntity2().getName());
 			}
 			break;
 		}
@@ -324,19 +325,21 @@ public class QueryService {
 			String year;
 			System.out.println("    #PERSON đã tham gia những EVENT nào trong năm YEAR?");
 			System.out.print("    >_PERSON: ");
-			person = scn.getInputStr();
+			person = scanner.getInputStr();
 			System.out.print("    >_YEAR: ");
-			year = scn.getInputStr();
+			year = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<P2E> mylist = w.per.findByPerson_NameAndType(person, "tham gia");
-			List<E2T> mylist2 = w.etr.findByTypeAndTime_Name_EndingWith("diễn ra vào", year);
+			@SuppressWarnings("unchecked")
+			List<Relationship<Person, Event>> mylist = wrap.relationship_repository.findByEntity1_NameAndType(person, "tham gia");
+			@SuppressWarnings("unchecked")
+			List<Relationship<Event, Time>> mylist2 = wrap.relationship_repository.findByEntity2_Name_EndingWith("diễn ra vào", year);
 			List<Event> el1 = new ArrayList<>();
 			List<Event> el2 = new ArrayList<>();
-			for (P2E j : mylist) {
-				el1.add(j.getEvent());
+			for (Relationship<Person, Event> j : mylist) {
+				el1.add(j.getEntity2());
 			}
-			for (E2T k : mylist2) {
-				el2.add(k.getEvent());
+			for (Relationship<Event, Time> k : mylist2) {
+				el2.add(k.getEntity1());
 			}
 			el1.retainAll(el2);
 			System.out.println("Has " + el1.size() + "result!");
@@ -366,20 +369,22 @@ public class QueryService {
 			String year;
 			System.out.println("    #LOCATION đã tổ chức những sự kiện gì trong năm YEAR?");
 			System.out.print("    >_LOCATION: ");
-			location = scn.getInputStr();
+			location = scanner.getInputStr();
 			System.out.print("    >_YEAR: ");
-			year = scn.getInputStr();
+			year = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<E2L> mylist = w.elr.findByTypeAndLocation_Name("được tổ chức bởi", location);
-			List<E2T> mylist2 = w.etr.findByTypeAndTime_Name_EndingWith("diễn ra vào", year);
+			@SuppressWarnings("unchecked")
+			List<Relationship<Event, Location>> mylist = wrap.relationship_repository.findByTypeAndEntity2_Name("được tổ chức bởi", location);
+			@SuppressWarnings("unchecked")
+			List<Relationship<Event, Time>> mylist2 = wrap.relationship_repository.findByEntity2_Name_EndingWith("diễn ra vào", year);
 
 			List<Event> el1 = new ArrayList<>();
 			List<Event> el2 = new ArrayList<>();
-			for (E2L j : mylist) {
-				el1.add(j.getEvent());
+			for (Relationship<Event, Location> j : mylist) {
+				el1.add(j.getEntity1());
 			}
-			for (E2T k : mylist2) {
-				el2.add(k.getEvent());
+			for (Relationship<Event, Time> k : mylist2) {
+				el2.add(k.getEntity1());
 			}
 			el1.retainAll(el2);
 			System.out.println("Has " + el1.size() + "result!");
@@ -395,9 +400,10 @@ public class QueryService {
 			String event;
 			System.out.println("    #Có bao nhiều người tham dự EVENT?");
 			System.out.print("    >_EVENT: ");
-			event = scn.getInputStr();
+			event = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<P2E> mylist = w.per.findByEvent_NameAndType(event, "tham gia");
+			@SuppressWarnings("unchecked")
+			List<Relationship<Person, Event>> mylist = wrap.relationship_repository.findByEntity1_NameAndType(event, "tham gia");
 			System.out.println("Has " + mylist.size() + " person 'tham gia' sự kiện " + event);
 //			for(P2E i : mylist) {
 //				System.out.println(i.getPerson().getName());
@@ -413,14 +419,15 @@ public class QueryService {
 			String country;
 			System.out.println("    #COUNTRY nào có RELATIONSHIP với COUNTRY?");
 			System.out.print("    >_RELATIONSHIP: ");
-			relationship = scn.getInputStr();
+			relationship = scanner.getInputStr();
 			System.out.print("    >_COUNTRY: ");
-			country = scn.getInputStr();
+			country = scanner.getInputStr();
 			System.out.println("    #Kết quả:");
-			List<C2C> mylist = w.ccr.findByTypeAndCountry2_Name(relationship, country);
+			@SuppressWarnings("unchecked")
+			List<Relationship<Country, Country>> mylist = wrap.relationship_repository.findByTypeAndEntity2_Name(relationship, country);
 			System.out.println("Has " + mylist.size() + "result!");
-			for (C2C i : mylist) {
-				System.out.println(i.getCountry().getName());
+			for (Relationship<Country, Country> i : mylist) {
+				System.out.println(i.getEntity1().getName());
 			}
 			break;
 		}

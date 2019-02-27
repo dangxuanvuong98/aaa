@@ -95,13 +95,13 @@ public class EventGenerator {
 
 	/**
 	 * 
-	 * @return Sinh ra id cho thực thể Event mới
+	 * @return Sinh ra myid cho thực thể Event mới
 	 */
-	public static String randomId() {
+	public static String randomMyid() {
 		Integer index = getIndex();
-		String id = "Event" + index;
+		String myid = "Event" + index;
 		incIndex();
-		return id;
+		return myid;
 	}
 
 	/**
@@ -182,9 +182,9 @@ public class EventGenerator {
 	 * 
 	 * @return Sinh ngẫu nhiên một sự kiện
 	 */
-	public static Event generateEvent(){
+	public static Event generate(){
 		Event event = new Event();
-		event.setId(randomId());
+		event.setMyid(randomMyid());
 		event.setName(randomName());
 		event.setDescription(randomDescription());
 //		event.setSource(SourceGenerator.generateSource());

@@ -24,7 +24,8 @@ import lombok.ToString;
  *         bởi neo4J
  */
 @NodeEntity
-@Data @ToString(callSuper=true, includeFieldNames=true)
+@Data
+@ToString(callSuper = false, includeFieldNames = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Entity {
@@ -32,7 +33,7 @@ public class Entity {
 	@Id
 	@GeneratedValue
 	protected Long neo4jId;
-	protected String id;
+	protected String myid;
 	protected String name;
 	protected String description;
 

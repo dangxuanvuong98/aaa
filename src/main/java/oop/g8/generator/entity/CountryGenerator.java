@@ -128,13 +128,13 @@ public abstract class CountryGenerator {
 	}
 
 	/**
-	 * @return id của thực thể Country mới
+	 * @return myid của thực thể Country mới
 	 */
-	public static String randomId() {
+	public static String randomMyId() {
 		Integer index = getIndex();
-		String id = "Country" + index;
+		String myid = "Country" + index;
 		incIndex();
-		return id;
+		return myid;
 	}
 
 	/**
@@ -176,12 +176,11 @@ public abstract class CountryGenerator {
 	 * 
 	 * @return 1 object Country với các thuộc tính được sinh ngẫu nhiên
 	 */
-	public static Country generateCountry() {
+	public static Country generate() {
 		Country country = new Country();
-		country.setId(randomId());
+		country.setMyid(randomMyId());
 		country.setName(randomName());
 		country.setDescription(randomDescription());
-//		country.setSource(SourceGenerator.generateSource());
 		country.setCapital(randomCapital());
 		return country;
 	}

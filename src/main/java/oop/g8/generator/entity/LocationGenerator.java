@@ -125,23 +125,22 @@ public class LocationGenerator {
 				+ rand2 + " triệu lượt khách du lịch";
 	}
 	
-	public static String randomId() {
+	public static String randomMyid() {
 		Integer index = getIndex();
-		String id = "Location" + index;
+		String myid = "Location" + index;
 		incIndex();
-		return id;
+		return myid;
 	}
 
 	/**
 	 * 
 	 * @return một object Location với các thuộc tính ngẫu nhiên
 	 */
-	public static Location generateLocation() {
+	public static Location generate() {
 		Location location = new Location();
-		location.setId(randomId());
+		location.setMyid(randomMyid());
 		location.setName(randomName());
 		location.setDescription(randomDescription());
-//		location.setSource(SourceGenerator.generateSource());
 		location.setCountry(randomCountry());
 		return location;
 	}

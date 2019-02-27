@@ -11,43 +11,32 @@ import oop.g8.generator.entity.OrganizationGenerator;
 import oop.g8.generator.entity.PersonGenerator;
 import oop.g8.generator.entity.SourceGenerator;
 import oop.g8.generator.entity.TimeGenerator;
+import oop.g8.generator.relation.RelationshipGenerator;
 import oop.g8.service.InitDB;
 import oop.g8.service.QueryService;
 import oop.g8.service.ScannerService;
 
-/**
- * public void run(String... args) throws Exception <----> hàm main() mọi thứ
- * trong hàm run(
- * 
- * @author Hoang Nam
- *
+/*
+ * Entrypoint của chương trình
  */
 @Component
 public class OopProAppEntry implements CommandLineRunner {
-
 	@Autowired
 	private QueryService queryService;
-
 	@Autowired
 	private InitDB initDbService;
-
 	@Autowired
 	private ScannerService scn;
-
 	private int selection;
 
-	@Override
-	public void run(String... args) throws Exception {
-
+	private void readData() {
 		SourceGenerator.getData("src/main/resources/rawData/entity/Source/domain_list");
-		PersonGenerator.getData(
-				"src/main/resources/rawData/entity/Person/firstname_list",
+		PersonGenerator.getData("src/main/resources/rawData/entity/Person/firstname_list",
 				"src/main/resources/rawData/entity/Person/midname_list",
 				"src/main/resources/rawData/entity/Person/lastname_list",
 				"src/main/resources/rawData/entity/Person/job_list",
 				"src/main/resources/rawData/entity/Person/des_element_list");
-		OrganizationGenerator.getData(
-				"src/main/resources/rawData/entity/Organization/organization_name_list",
+		OrganizationGenerator.getData("src/main/resources/rawData/entity/Organization/organization_name_list",
 				"src/main/resources/rawData/entity/Organization/headquarters_list",
 				"src/main/resources/rawData/entity/Organization/firstname_list",
 				"src/main/resources/rawData/entity/Organization/midname_list",
@@ -56,27 +45,24 @@ public class OopProAppEntry implements CommandLineRunner {
 				"src/main/resources/rawData/entity/Organization/des_element1_list",
 				"src/main/resources/rawData/entity/Organization/des_element2_list",
 				"src/main/resources/rawData/entity/Organization/country_list");
-		CountryGenerator.getData(
-				"src/main/resources/rawData/entity/Country/country_list",
+		CountryGenerator.getData("src/main/resources/rawData/entity/Country/country_list",
 				"src/main/resources/rawData/entity/Country/capital_list",
 				"src/main/resources/rawData/entity/Country/des_element1_list",
 				"src/main/resources/rawData/entity/Country/des_element2_list",
 				"src/main/resources/rawData/entity/Country/des_element3_list");
-		LocationGenerator.getData(
-				"src/main/resources/rawData/entity/Location/location_list",
+		LocationGenerator.getData("src/main/resources/rawData/entity/Location/location_list",
 				"src/main/resources/rawData/entity/Location/country_list",
 				"src/main/resources/rawData/entity/Location/des_element_list");
-		EventGenerator.getData(
-				"src/main/resources/rawData/entity/Event/venue_list",
+		EventGenerator.getData("src/main/resources/rawData/entity/Event/venue_list",
 				"src/main/resources/rawData/entity/Event/country_list",
 				"src/main/resources/rawData/entity/Event/festival_name_list",
 				"src/main/resources/rawData/entity/Event/product_name_list");
-		TimeGenerator.getData(
-				"src/main/resources/rawData/entity/Time/special_day_list");
+		TimeGenerator.getData("src/main/resources/rawData/entity/Time/special_day_list");
+		RelationshipGenerator.getData("src/main/resources/rawData/relation");
+		System.out.println("Read files: Done!");
+	}
 
-		//
-		System.out.println("read files done!");
-
+	private void showUI() {
 		while (true) {
 			System.out.println("------------------------MENU-------------------------");
 			System.out.println("1.Sinh dữ liệu giả lập:");
@@ -97,22 +83,11 @@ public class OopProAppEntry implements CommandLineRunner {
 				System.exit(0);
 			}
 		}
-
-//		Page<Person> pList = w.pr.findAll(new PageRequest(0, 2));
-//		System.out.println(pList.getContent());
-
-//		P2P p2p = new P2P("love", "link", new Date(), PersonGenerator.generatePerson(), PersonGenerator.generatePerson());
-//		w.ppr.save(p2p);
-//		
-//		Page<P2P> pplist = w.ppr.findAll(new PageRequest(0, 2));
-//		System.out.println(pplist.getContent());
-//		
-//		List<P2P> myp2p = w.ppr.findByPerson_NameAndPerson2_Name("Balsam Bart Sharline", "Maurise Tomkin Seana");
-//		System.out.println(myp2p.get(0).getType());
-//		
-//		List<P2P> myp2p2 = w.ppr.findByPerson_NameAndType("Balsam Bart Sharline", "love");
-//		System.out.println(myp2p2.get(0).getPerson2().getName());
-
 	}
 
+	@Override
+	public void run(String... args) throws Exception {
+		this.readData();
+		this.showUI();
+	}
 }

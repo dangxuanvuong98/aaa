@@ -115,13 +115,13 @@ public class PersonGenerator {
 
 	/**
 	 * 
-	 * @return trả về id phù hợp với thực thể Person được tạo mới
+	 * @return trả về myid phù hợp với thực thể Person được tạo mới
 	 */
-	public static String randomId() {
+	public static String randomMyid() {
 		Integer index = getIndex();
-		String id = "Person" + index;
+		String myid = "Person" + index;
 		incIndex();
-		return id;
+		return myid;
 	}
 
 	/**
@@ -188,15 +188,14 @@ public class PersonGenerator {
 	 * 
 	 * @return thực thể Person với các thuộc sính ngẫu nhiên phù hợp
 	 */
-	public static Person generatePerson() {
+	public static Person generate() {
 		Person person = new Person();
 		person.setAge(randomAge());
 		person.setDescription(randomDescription());
 		person.setGender(randomGender());
-		person.setId(randomId());
+		person.setMyid(randomMyid());
 		person.setJob(randomJob());
 		person.setName(randomName());
-//		person.setSource(SourceGenerator.generateSource());
 		return person;
 	}
 

@@ -29,7 +29,7 @@ public class ScannerService {
 		String str;
 		while (true) {
 			try {
-				str = scn.next();
+				str = scn.nextLine();
 			} catch (Exception e) {
 				System.out.print("Không hợp lệ, mời nhập lại: ");
 				scn.nextLine();

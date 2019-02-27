@@ -194,13 +194,13 @@ public class OrganizationGenerator {
 
 	/**
 	 * 
-	 * @return id phù hợp cho thực thể Organization được tạo mới
+	 * @return myid phù hợp cho thực thể Organization được tạo mới
 	 */
-	public static String randomId() {
+	public static String randomMyid() {
 		Integer index = getIndex();
-		String id = "Organization" + index;
+		String myid = "Organization" + index;
 		incIndex();
-		return id;
+		return myid;
 	}
 	
 	/**
@@ -288,9 +288,9 @@ public class OrganizationGenerator {
 	 * 
 	 * @return một thực thể Oganization với các thuộc tính ngẫu nhiên phù hợp
 	 */
-	public static Organization generateOrganization() {
+	public static Organization generate() {
 		Organization organization = new Organization();
-		organization.setId(randomId());
+		organization.setMyid(randomMyid());
 		organization.setName(randomName());
 		organization.setDescription(randomDescription());
 //		organization.setSource(SourceGenerator.generateSource());
